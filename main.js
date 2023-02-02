@@ -64,6 +64,7 @@ const cardsOnDom = (array) => {
 //how students are added to the array and the information that is added procedurally
 const addStudent = (event) => {
   //event.preventdefault();
+  //above code seemed to break everything stating that preventDefault didn't exist
 
   const house = () => {
     const randomNumber = Math.floor(Math.random() * 4);
@@ -82,15 +83,20 @@ const addStudent = (event) => {
   const name = document.querySelector("#name");
   const id = students.length + 1;
 
-  const newStudent = {
-    id: id,
-    name: name.value,
-    house: house(),
-    expelled: false
+  if (name.value != '') {
+    const newStudent = {
+      id: id,
+      name: name.value,
+      house: house(),
+      expelled: false
+    }
+  
+    students.push(newStudent);
+    cardsOnDom(students);
+    renderToDom("#error", "");
+  } else {
+    renderToDom("#error", "<div>THE NAME CANNOT BE BLANK</div>");
   }
-
-  students.push(newStudent);
-  cardsOnDom(students);
 }
 
 //logic to listen to button and run the addStudent function
