@@ -90,6 +90,11 @@ const startApp = () => {
     const name = document.querySelector("#name");
     const id = students.length + 1;
 
+    const reset = () => {
+      const form = document.getElementById("name");
+      form.value = "";
+    }
+
     if (name.value) {
       const newStudent = {
         id: id,
@@ -101,10 +106,15 @@ const startApp = () => {
       students.push(newStudent);
       cardsOnDom(students);
       renderToDom("#error", "");
+   
     } else {
       renderToDom("#error", "<div>THE NAME CANNOT BE BLANK</div>");
     }
+    //.reset doesn't work for some reason so I made a reset function that apparently works.
+    // document.querySelector("form").value.reset()
 
+    reset();
+   
   }
 
   //logic to listen to button and run the addStudent function
@@ -126,7 +136,6 @@ const startApp = () => {
 
       students[indexOfMember].expelled = true;
     }
-    const reset = () =>
 
     cardsOnDom(students);
   });
