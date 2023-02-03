@@ -1,5 +1,10 @@
 //Array used to store input students and the values created by the sorting system
 const students = [];
+//for easy reference the datastructure is like below:
+// id: id,
+// name: name.value,
+// house: house(),
+// expelled: false
 
 //script to show or hide the add students form. Default behavior is hide
 const showFormButton = document.querySelector("#showForm");
@@ -83,7 +88,7 @@ const addStudent = (event) => {
   const name = document.querySelector("#name");
   const id = students.length + 1;
 
-  if (name.value != '') {
+  if (name.value) {
     const newStudent = {
       id: id,
       name: name.value,
@@ -103,7 +108,7 @@ const addStudent = (event) => {
 const submitButton = document.querySelector("#submitForm");
 submitButton.addEventListener("click", addStudent);
 
-//functionality for expel button
+//functionality for expel button. All it does is flip the expelled key pair to true on the corresponding ID. Logic for what that does when set to true is in "cardsOnDom"
 const appDiv = document.querySelector("#good");
 
 appDiv.addEventListener("click", (event) => {
