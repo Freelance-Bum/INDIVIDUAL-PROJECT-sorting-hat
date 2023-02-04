@@ -66,12 +66,13 @@ const startApp = () => {
     renderToDom("#good", goodString);
     renderToDom("#bad", badString);
   }
+  // const thing = document.querySelector("name");
 
   //how students are added to the array and the information that is added procedurally
   const addStudent = (event) => {
     //event.preventdefault();
     //above code seemed to break everything stating that preventDefault didn't exist
-  
+
 
     const house = () => {
       const randomNumber = Math.floor(Math.random() * 4);
@@ -111,7 +112,7 @@ const startApp = () => {
       renderToDom("#error", "<div>THE NAME CANNOT BE BLANK</div>");
     }
     //.reset doesn't work for some reason so I made a reset function that apparently works.
-    // document.querySelector("form").value.reset()
+    // thing.reset();
 
     reset();
    
@@ -140,6 +141,7 @@ const startApp = () => {
     cardsOnDom(students);
   });
 
+  //functionality for filter buttons
   const filter = (array, house) => {
     const typeArray = [];
 
@@ -154,6 +156,7 @@ const startApp = () => {
     return typeArray;
   };
 
+  //targets buttons to invoke filter function
   const showGryffindorButton = document.querySelector("#showGryffindor");
   const showRavenclawButton = document.querySelector("#showRavenclaw");
   const showHufflepuffButton = document.querySelector("#showHufflepuff");
@@ -185,4 +188,5 @@ const startApp = () => {
   });
 }
 
+//LOOK! IT'S ALL IN A FUNCTION! YAY?
 startApp();
